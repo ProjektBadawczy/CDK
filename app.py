@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
-import os
-
 import aws_cdk as cdk
-
-from cdk.cdk_stack import EcsStack
-
+from cdk.microservices_stack import MicroservicesStack
+from cdk.monolith_stack import MonolithStack
 
 app = cdk.App()
-EcsStack(app, "EcsStack", env=cdk.Environment(account='183235224200', region='eu-central-1'))
+MonolithStack(app, "EcsMonolithStack", env=cdk.Environment(account='183235224200', region='eu-central-1'))
+MicroservicesStack(app, "EcsMicroservicesStack", env=cdk.Environment(account='183235224200', region='eu-central-1'))
 app.synth()
