@@ -11,7 +11,7 @@ def create_microservices_listener(app_version: str, lb: ApplicationLoadBalancer,
             return inner_create_listener("CHANGE ME!!!", lb, service)
         case "cpp":
             # TODO fill me with real api gateway container name!
-            return inner_create_listener("CHANGE ME!!!", lb, service)
+            return inner_create_listener("apigateway", lb, service)
 
 
 def create_monolith_listener(app_version: str, lb: ApplicationLoadBalancer, service: Ec2Service):
@@ -23,7 +23,7 @@ def create_monolith_listener(app_version: str, lb: ApplicationLoadBalancer, serv
             return inner_create_listener("CHANGE ME!!!", lb, service)
         case "cpp":
             # TODO fill me with real monolith container name!
-            return inner_create_listener("CHANGE ME!!!", lb, service)
+            return inner_create_listener("monolith", lb, service)
 
 
 def inner_create_listener(internet_facing_container_name: str, lb: ApplicationLoadBalancer, service: Ec2Service):

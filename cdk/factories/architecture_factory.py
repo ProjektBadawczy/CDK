@@ -23,6 +23,9 @@ def create_monolith(task: Ec2TaskDefinition, app_version: str, graphs_type: str)
             # TODO Change image path to real path to monolith image. Do not include any tags!
             create_monolith_container(task=task, image_path="CHANGE ME!!!", image_tag=graphs_type)
         case "cpp":
-            # TODO Change image path to real path to monolith image. Do not include any tags!
-            create_monolith_container(task=task, image_path="CHANGE ME!!!", image_tag=graphs_type)
+            create_monolith_container(task=task,
+                                      image_path="quetzonarch/researchprojectmonolithcpp_webapi" +
+                                                 ("_sparse" if graphs_type=="small-sparse" else ""),
+                                      image_tag="latest",
+                                      env={["INSIDE_DOCKER"]: "1"})
 
