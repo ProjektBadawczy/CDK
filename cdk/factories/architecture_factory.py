@@ -27,5 +27,5 @@ def create_monolith(task: Ec2TaskDefinition, app_version: str, graphs_type: str)
                                       image_path="quetzonarch/researchprojectmonolithcpp_webapi" +
                                                  ("_sparse" if graphs_type=="small-sparse" else ""),
                                       image_tag="latest",
-                                      env={["INSIDE_DOCKER"]: "1"})
+                                      env={"INSIDE_DOCKER": "1"})
 

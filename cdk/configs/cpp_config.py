@@ -1,12 +1,14 @@
-from aws_cdk.aws_ecs import Ec2TaskDefinition
+from aws_cdk.aws_ecs import Ec2TaskDefinition, PortMapping, Protocol
+
+from cdk.factories.container_factory import create_container
 
 
 def configure_cpp_microservices(task_definition: Ec2TaskDefinition, graphs_type: str):
     prefix = "quetzonarch/researchprojectmicroservicescpp_"
     suffix = "_sparse" if graphs_type=="small-sparse" else ""
-    env_vars = {["INSIDE_DOCKER"]: "1"}
+    env_vars = {"INSIDE_DOCKER": "1"}
     api_gateway = create_container(task=task_definition, container_name="apigateway",
-                                   image_path=prefix+"apigateway"+, memory_limit=1024,
+                                   image_path=prefix+"apigateway", memory_limit=1024,
                                    port_mapping=PortMapping(container_port=8001, host_port=8001,
                                                             protocol=Protocol.TCP),
                                    env=env_vars)
@@ -17,7 +19,7 @@ def configure_cpp_microservices(task_definition: Ec2TaskDefinition, graphs_type:
                                    image_path=prefix+"bfsservice", memory_limit=1024,
                                    env=env_vars)
     edmonds_karp_service = create_container(task=task_definition, container_name="edmondskarpservice",
-                                            image_path=prefix+"edmondskarpservice"+,
+                                            image_path=prefix+"edmondskarpservice",
                                             memory_limit=1024, env=env_vars)
     push_relabel_service = create_container(task=task_definition, container_name="pushrelabelservice",
                                             image_path=prefix+"pushrelabelservice",

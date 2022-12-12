@@ -8,7 +8,7 @@ from aws_cdk.aws_ecs import Ec2TaskDefinition, PortMapping, ContainerDefinition,
 '''
 
 
-def create_monolith_container(task: Ec2TaskDefinition, image_path: str, image_tag: str, env: {[str]: str} = None):
+def create_monolith_container(task: Ec2TaskDefinition, image_path: str, image_tag: str, env: {str: str} = None):
     create_container(task=task,
                      container_name="monolith",
                      image_path=image_path + ":" + image_tag,
@@ -28,7 +28,7 @@ def create_monolith_container(task: Ec2TaskDefinition, image_path: str, image_ta
 
 
 def create_container(task: Ec2TaskDefinition, container_name: str, image_path: str, memory_limit: int,
-                     port_mapping: PortMapping = None, env: {[str]: str} = None) -> ContainerDefinition:
+                     port_mapping: PortMapping = None, env: {str: str} = None) -> ContainerDefinition:
     return task.add_container(container_name,
                               container_name=container_name,
                               image=ContainerImage.from_registry(image_path),
