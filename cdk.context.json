@@ -1,10 +1,10 @@
 {
-  "availability-zones:account=183235224200:region=eu-central-1": [
+  "availability-zones:account=736936197866:region=eu-central-1": [
     "eu-central-1a",
     "eu-central-1b",
     "eu-central-1c"
   ],
-  "vpc-provider:account=183235224200:filter.isDefault=true:region=eu-central-1:returnAsymmetricSubnets=true": {
+  "vpc-provider:account=736936197866:filter.isDefault=true:region=eu-central-1:returnAsymmetricSubnets=true": {
     "vpcId": "vpc-1d30a577",
     "vpcCidrBlock": "172.31.0.0/16",
     "availabilityZones": [],
